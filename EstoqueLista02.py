@@ -35,8 +35,7 @@ def consultar_produtos():
         print("O estoque está vazio.")
         return
 
-    for i, produto in enumerate(estoque):
-
+    for i,produto in enumerate(estoque):
         print(f"\nCódigo: {i}")
         print(f"Produto: {produto[0]}")
         print(f"Preço: R$ {produto[1]:.2f}")
