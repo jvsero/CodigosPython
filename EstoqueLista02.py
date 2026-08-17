@@ -14,9 +14,16 @@ def cadastrar_produto():
     preco = float(input("Digite o preço do produto: R$ "))
 
     quantidade = int(input("Digite a quantidade em estoque: "))
+    categoria = int(input("Informe a Categoria:"))
 
     # Criando uma lista para representar o produto
-    produto = [nome, preco, quantidade]
+    produto = [
+
+        [nome, preco, quantidade]
+        [categoria]  
+
+          ]
+
 
     # Adicionando o produto na lista estoque
     estoque.append(produto)
@@ -24,6 +31,7 @@ def cadastrar_produto():
     print("\nProduto cadastrado com sucesso!")
 
 
+           
 # Função de Consultar todos Produtos
 
 
@@ -48,13 +56,13 @@ def consultar_produto():
 
     print("\n===== CONSULTAR PRODUTO =====")
 
-    nome_busca = input("Digite o nome do produto: ")
+    busca = input("Digite o nome do produto: ")
 
     encontrado = False
 
     for produto in estoque:
 
-        if produto[0].lower() == nome_busca.lower():
+        if produto[0].lower() == busca.lower():
 
             print("\nProduto encontrado!")
             print(f"Nome: {produto[0]}")
@@ -67,17 +75,18 @@ def consultar_produto():
         print("\nProduto não encontrado.")
 
 
+
 # Função de Alterar Produtos
 
 def alterar_produto():
 
     print("\n===== ALTERAR PRODUTO =====")
 
-    nome_busca = input("Digite o nome do produto: ")
+    busca = input("Digite o nome do produto: ")
 
     for produto in estoque:
 
-        if produto[0].lower() == nome_busca.lower():
+        if produto[0].lower() == busca.lower():
 
             print("\nProduto encontrado!")
 
@@ -108,11 +117,11 @@ def excluir_produto():
 
     print("\n===== EXCLUIR PRODUTO =====")
 
-    nome_busca = input("Digite o nome do produto: ")
+    busca = input("Digite o nome do produto: ")
 
     for produto in estoque:
 
-        if produto[0].lower() == nome_busca.lower():
+        if produto[0].lower() == busca.lower():
 
             estoque.remove(produto)
 
