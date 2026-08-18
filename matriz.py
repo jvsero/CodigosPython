@@ -7,8 +7,9 @@ matriz = [
 
 for i in range(len(matriz)):
     for j in range(len(matriz[i])):
-        if matriz[i][j] == 9:
+        if matriz[i][j] == 7:
             print(f"Matriz Informada: {matriz}")
             print("Matriz Localizada:",matriz[i])
-            print("O número esta na respectiva Linha:", [i])
             print("O número esta na respectiva Coluna:",[j])
+            print("O número esta na respectiva Linha:", [i])
+           
