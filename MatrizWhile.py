@@ -1,4 +1,3 @@
-#Dados da Matriz
 matriz = [
     [8, 3, 5],
     [1, 9, 4],
@@ -10,7 +9,7 @@ print("Matriz no formato visual:")
 for linha in matriz:
     print(linha)
 
-numero_procurado = 4
+numero_procurado = 9
 
 linha = 0
 encontrou = False
@@ -25,8 +24,8 @@ while linha < len(matriz):
             print("\n")
             print("Número Inserido: ",numero_procurado)
             print("Número encontrado!")
-            print("Linha:",  linha)
-            print("Coluna:", coluna)
+            print("Linha:",   linha)
+            print("Coluna:",  coluna)
             print("\n")
             encontrou = True
 
