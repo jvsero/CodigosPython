@@ -22,6 +22,7 @@ def matriz_identidade():
 
     #for: "Para cada elemento/iteração de uma sequência, faça..."
     # while: "Enquanto esta condição for verdadeira, faça..."
+    # A função range() no Python serve para gerar uma sequência de números inteiros em um intervalo definido
 
     # i representa Linha
     # j representa coluna
