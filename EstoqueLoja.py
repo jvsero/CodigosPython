@@ -1,18 +1,29 @@
-# Variável global
+
+# 'estoque' é uma lista global que armazenará todos os dicionários de produtos.
 estoque = []
 
-# Função auxiliar para encontrar o menor código disponível (reaproveita excluídos)
+
+
+
 def obter_proximo_codigo():
+    
+    # Cria um conjunto com os códigos já em uso (variável local)
     codigos_em_uso = {produto["codigo"] for produto in estoque}
+    
     codigo = 1
+    # Incrementa até encontrar o primeiro número que NÃO está em uso
     while codigo in codigos_em_uso:
         codigo += 1
+        
     return codigo
 
-# Função de Cadastro de Produtos
+
 def cadastrar_produto(marca, modelo, preco, cor, quantidade):
+   
+    # Obtenção do código disponível
     codigo = obter_proximo_codigo()
     
+    # Dicionário representando o produto (variável local)
     produto = {
         "codigo": codigo,
         "marca": marca,
@@ -21,11 +32,17 @@ def cadastrar_produto(marca, modelo, preco, cor, quantidade):
         "preco": preco,  
         "quantidade": quantidade
     }
+    
+    # Adiciona o dicionário à lista global 'estoque'
     estoque.append(produto)
     print(f"\nProduto Cadastrado com Sucesso! Código gerado: {codigo}")
 
-# Busca do Produto por Código
+
 def localizar_produto():
+    """
+    Solicita o código do produto e realiza a busca sequencial no estoque.
+    Utiliza bloco try/except para validar a entrada numérica.
+    """
     try:
         busca_codigo = int(input("Informe o código do produto: "))
     except ValueError:
@@ -33,6 +50,8 @@ def localizar_produto():
         return
 
     encontrado = False
+    
+    # Loop de busca no estoque
     for produto in estoque:
         if produto["codigo"] == busca_codigo:
             print("\nProduto encontrado!")
@@ -43,13 +62,16 @@ def localizar_produto():
             print(f"Preço: R$ {produto['preco']:.2f}")
             print("Qtde:", produto["quantidade"])
             encontrado = True
-            break
+            break  # Interrompe o loop ao encontrar o produto
 
     if not encontrado:
         print("\nProduto não encontrado.")
 
-# Alterar produto por Código
+
 def alterar_produto():
+    """
+    Busca o produto pelo código e exibe um submenu para alterar.
+    """
     try:
         busca_codigo = int(input("Digite o código do produto que deseja alterar: "))
     except ValueError:
@@ -57,6 +79,8 @@ def alterar_produto():
         return
 
     encontrado = False
+    
+    # Busca o item para alteração
     for produto in estoque:
         if produto["codigo"] == busca_codigo:
             encontrado = True
@@ -68,6 +92,7 @@ def alterar_produto():
 
             opcao = input("Escolha uma opção: ")
 
+            # Atualização dos campos do dicionário
             if opcao == "1":
                 produto["marca"] = input("Digite a nova Marca: ")
                 print("\nMarca alterada com sucesso!")
@@ -88,8 +113,12 @@ def alterar_produto():
     if not encontrado:
         print("\nProduto não encontrado.")
 
-# Função de Excluir Produtos por Código
+
 def excluir_produto():
+    """
+    Remove o dicionário do produto da lista 'estoque' usando o código.
+    Libera o código para reutilização em futuros cadastros.
+    """
     try:
         busca_codigo = int(input("Digite o código do produto que deseja excluir: "))
     except ValueError:
@@ -97,9 +126,10 @@ def excluir_produto():
         return
 
     encontrado = False
+    
     for produto in estoque:
         if produto["codigo"] == busca_codigo:
-            estoque.remove(produto)
+            estoque.remove(produto)  # Remove o dicionário da lista global
             encontrado = True
             print(f"\nProduto de código {busca_codigo} excluído com sucesso!")
             print("Este código está livre para o próximo cadastro.")
@@ -108,8 +138,11 @@ def excluir_produto():
     if not encontrado:
         print("\nProduto não encontrado.")
 
-# Lista de Estoque
+
 def listar_estoque():
+    """
+    Percorre a lista 'estoque' e exibe os dados formatados de todos os produtos.
+    """
     if len(estoque) == 0:
         print("\nEstoque vazio.")
     else:
@@ -124,7 +157,8 @@ def listar_estoque():
                 f"Qtde: {produto['quantidade']}"
             )
 
-# Menu principal
+
+# Menu  Principal
 while True:
     print("\n========== CONTROLE DE ESTOQUE ==========")
     print("1 - Cadastrar produto")
@@ -137,18 +171,20 @@ while True:
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        marca_in = input("Marca: ")
-        modelo_in = input("Modelo: ")
-        cor_in = input("Cor: ")
-        preco_in = float(input("Preço: R$ "))
-        quantidade_in = int(input("Quantidade: "))
+        # Coleta das entradas do usuário em variáveis locais
+        marca_input = input("Marca: ")
+        modelo_input = input("Modelo: ")
+        cor_input = input("Cor: ")
+        preco_input = float(input("Preço: R$ "))
+        quantidade_input = int(input("Quantidade: "))
 
+        # Chamada da função utilizando parâmetros nomeados (keyword arguments)
         cadastrar_produto(
-            marca=marca_in,
-            modelo=modelo_in,
-            preco=preco_in,
-            cor=cor_in,
-            quantidade=quantidade_in
+            marca=marca_input,
+            modelo=modelo_input,
+            preco=preco_input,
+            cor=cor_input,
+            quantidade=quantidade_input
         )
 
     elif opcao == "2":
@@ -165,7 +201,7 @@ while True:
 
     elif opcao == "0":
         print("\nSistema encerrado.")
-        break
+        break  # Encerra o loop 'while' e finaliza o programa
 
     else:
         print("\nOpção inválida.")
