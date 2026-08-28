@@ -1,4 +1,3 @@
-
 # 'estoque' é uma lista global que armazenará todos os dicionários de produtos.
 estoque = []
 
@@ -18,10 +17,13 @@ def obter_proximo_codigo():
     return codigo
 
 
-def cadastrar_produto(marca, modelo, preco, cor, quantidade):
+def cadastrar_produto(marca, modelo, preco_unitario, cor, quantidade):
    
     # Obtenção do código disponível
     codigo = obter_proximo_codigo()
+    
+    # Calcula o preço total do produto
+    preco_total = preco_unitario * quantidade
     
     # Dicionário representando o produto (variável local)
     produto = {
@@ -29,7 +31,8 @@ def cadastrar_produto(marca, modelo, preco, cor, quantidade):
         "marca": marca,
         "modelo": modelo,
         "cor": cor,
-        "preco": preco,  
+        "preco_unitario": preco_unitario,
+        "preco_total": preco_total,
         "quantidade": quantidade
     }
     
@@ -59,8 +62,9 @@ def localizar_produto():
             print("Marca:", produto["marca"])
             print("Modelo:", produto["modelo"])
             print("Cor:", produto["cor"])
-            print(f"Preço: R$ {produto['preco']:.2f}")
+            print(f"Preço unitário: R$ {produto['preco_unitario']:.2f}")
             print("Qtde:", produto["quantidade"])
+            print(f"Preço total: R$ {produto['preco_total']:.2f}")
             encontrado = True
             break  # Interrompe o loop ao encontrar o produto
 
@@ -96,16 +100,43 @@ def alterar_produto():
             if opcao == "1":
                 produto["marca"] = input("Digite a nova Marca: ")
                 print("\nMarca alterada com sucesso!")
+
             elif opcao == "2":
                 produto["modelo"] = input("Digite o novo Modelo: ")
                 print("\nModelo alterado com sucesso!")
+
             elif opcao == "3":
                 produto["cor"] = input("Digite a nova Cor: ")
-                produto["preco"] = float(input("Digite o novo Preço: R$ "))
-                print("\nCor e Preço alterados com sucesso!")
+
+                try:
+                    produto["preco_unitario"] = float(
+                        input("Digite o novo Preço Unitário: R$ ")
+                    )
+
+                    produto["preco_total"] = (
+                        produto["preco_unitario"] * produto["quantidade"]
+                    )
+
+                    print("\nCor e Preço alterados com sucesso!")
+
+                except ValueError:
+                    print("\nPreço inválido! Digite apenas números.")
+
             elif opcao == "4":
-                produto["quantidade"] = int(input("Digite a nova Quantidade: "))
-                print("\nQuantidade alterada com sucesso!")
+                try:
+                    produto["quantidade"] = int(
+                        input("Digite a nova Quantidade: ")
+                    )
+
+                    produto["preco_total"] = (
+                        produto["preco_unitario"] * produto["quantidade"]
+                    )
+
+                    print("\nQuantidade alterada com sucesso!")
+
+                except ValueError:
+                    print("\nQuantidade inválida! Digite apenas números.")
+
             else:
                 print("\nOpção inválida.")
             break
@@ -153,8 +184,9 @@ def listar_estoque():
                 f"Marca: {produto['marca']} | "
                 f"Modelo: {produto['modelo']} | "
                 f"Cor: {produto['cor']} | "
-                f"Preço: R$ {produto['preco']:.2f} | "
-                f"Qtde: {produto['quantidade']}"
+                f"Preço unitário: R$ {produto['preco_unitario']:.2f} | "
+                f"Qtde: {produto['quantidade']} | "
+                f"Preço total: R$ {produto['preco_total']:.2f}"
             )
 
 
@@ -175,14 +207,28 @@ while True:
         marca_input = input("Marca: ")
         modelo_input = input("Modelo: ")
         cor_input = input("Cor: ")
-        preco_input = float(input("Preço: R$ "))
-        quantidade_input = int(input("Quantidade: "))
+
+        try:
+            preco_unitario_input = float(input("Preço Unitário: R$ "))
+            quantidade_input = int(input("Quantidade: "))
+
+            if preco_unitario_input < 0:
+                print("\nO preço não pode ser negativo.")
+                continue
+
+            if quantidade_input < 0:
+                print("\nA quantidade não pode ser negativa.")
+                continue
+
+        except ValueError:
+            print("\nValor inválido! Digite números corretamente.")
+            continue
 
         # Chamada da função utilizando parâmetros nomeados (keyword arguments)
         cadastrar_produto(
             marca=marca_input,
             modelo=modelo_input,
-            preco=preco_input,
+            preco_unitario=preco_unitario_input,
             cor=cor_input,
             quantidade=quantidade_input
         )
@@ -205,3 +251,4 @@ while True:
 
     else:
         print("\nOpção inválida.")
+
