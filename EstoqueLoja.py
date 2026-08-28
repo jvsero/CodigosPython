@@ -3,7 +3,7 @@
 estoque = []
 
 
-
+# Colocar Pârametros 
 
 def obter_proximo_codigo():
     
