@@ -3,7 +3,6 @@
 ###
 
 <h2 data-importer="text" align="left">Nosso lema é crescer juntos.</h2>
-<br>
 <h2 data-importer="text" align="left"> Sua chegada só reforça isso. Boas-vindas ao time!</h2>
 
 ###
