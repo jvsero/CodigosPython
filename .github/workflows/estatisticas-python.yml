@@ -12,10 +12,9 @@ contents: write
 
 jobs:
 gerar-estatisticas:
-
-```
 runs-on: ubuntu-latest
 
+```
 steps:
 
   # ==========================================
@@ -64,7 +63,7 @@ steps:
 
       headers = {
           "Accept": "application/vnd.github+json",
-          "X-GitHub-Api-Version": "2026-03-10"
+          "X-GitHub-Api-Version": "2022-11-28"
       }
 
       if TOKEN:
@@ -82,7 +81,9 @@ steps:
           )
 
           with urllib.request.urlopen(request) as response:
-              return json.loads(response.read().decode("utf-8"))
+              return json.loads(
+                  response.read().decode("utf-8")
+              )
 
       # ==========================================
       # OBTER LINGUAGENS DO REPOSITÓRIO
@@ -130,18 +131,23 @@ steps:
 
       repositorio = github_api(url_repo)
 
-      estrelas = repositorio.get("stargazers_count", 0)
+      estrelas = repositorio.get(
+          "stargazers_count",
+          0
+      )
 
-      forks = repositorio.get("forks_count", 0)
-
-      issues = repositorio.get("open_issues_count", 0)
+      forks = repositorio.get(
+          "forks_count",
+          0
+      )
 
       # ==========================================
       # OBTER NÚMERO DE COMMITS
       # ==========================================
 
       url_commits = (
-          f"{API}/repos/{USUARIO}/{REPOSITORIO}/commits?per_page=1"
+          f"{API}/repos/{USUARIO}/{REPOSITORIO}/commits"
+          "?per_page=1"
       )
 
       request = urllib.request.Request(
@@ -151,28 +157,39 @@ steps:
 
       with urllib.request.urlopen(request) as response:
 
-          link_header = response.headers.get("Link", "")
+          dados_commits = json.loads(
+              response.read().decode("utf-8")
+          )
+
+          link_header = response.headers.get(
+              "Link",
+              ""
+          )
+
+          commits = len(dados_commits)
 
           if 'rel="last"' in link_header:
 
-              parte_final = link_header.split('rel="last"')[0]
-
-              numero = parte_final.split("page=")[-1]
-
-              numero = numero.replace(">", "")
-
               try:
+
+                  parte = link_header.split(
+                      'rel="last"'
+                  )[0]
+
+                  numero = parte.split(
+                      "page="
+                  )[-1]
+
+                  numero = numero.replace(
+                      ">",
+                      ""
+                  )
+
                   commits = int(numero)
-              except ValueError:
-                  commits = 0
 
-          else:
+              except (ValueError, IndexError):
 
-              dados_commits = json.loads(
-                  response.read().decode("utf-8")
-              )
-
-              commits = len(dados_commits)
+                  commits = len(dados_commits)
 
       # ==========================================
       # PREPARAR DIRETÓRIO
@@ -203,10 +220,6 @@ steps:
 
       python_cor = "#3776AB"
 
-      verde = "#3fb950"
-
-      roxo = "#8957e5"
-
       # ==========================================
       # BARRAS DAS LINGUAGENS
       # ==========================================
@@ -230,13 +243,22 @@ steps:
           linguagens_ordenadas[:8]
       ):
 
-          cor = cores[indice % len(cores)]
+          cor = cores[
+              indice % len(cores)
+          ]
 
-          nome = escape(linguagem)
+          nome = escape(
+              linguagem
+          )
 
           largura = max(
               10,
               porcentagem * 5
+          )
+
+          largura = min(
+              largura,
+              500
           )
 
           barras += f"""
@@ -293,13 +315,17 @@ steps:
       )
 
       # ==========================================
-      # SVG
+      # ALTURA DO SVG
       # ==========================================
 
       altura = max(
           570,
-          y + 40
+          y + 80
       )
+
+      # ==========================================
+      # SVG
+      # ==========================================
 
       svg = f"""<svg
       width="820"
@@ -354,7 +380,7 @@ steps:
           font-weight="bold"
           font-family="Arial, sans-serif">
 
-          📊 Estatísticas dos meus códigos
+          Estatísticas dos meus códigos
 
       </text>
 
@@ -386,7 +412,7 @@ steps:
           font-size="16"
           font-family="Arial, sans-serif">
 
-          🐍 Python
+          Python
 
       </text>
 
@@ -442,7 +468,7 @@ steps:
           font-size="15"
           font-family="Arial, sans-serif">
 
-          ⭐ {estrelas} estrelas
+          Estrelas: {estrelas}
 
       </text>
 
@@ -453,7 +479,7 @@ steps:
           font-size="15"
           font-family="Arial, sans-serif">
 
-          🍴 {forks} forks
+          Forks: {forks}
 
       </text>
 
@@ -464,7 +490,7 @@ steps:
           font-size="15"
           font-family="Arial, sans-serif">
 
-          💻 {commits} commits
+          Commits: {commits}
 
       </text>
 
@@ -475,32 +501,54 @@ steps:
           font-size="15"
           font-family="Arial, sans-serif">
 
-          🐍 Python
+          Python
 
       </text>
 
       </svg>
       """
 
+      # ==========================================
+      # SALVAR SVG
+      # ==========================================
+
       arquivo.write_text(
           svg,
           encoding="utf-8"
       )
 
-      print("======================================")
-      print("ESTATÍSTICAS GERADAS")
-      print("======================================")
-
-      for linguagem, percentual in linguagens_ordenadas:
-
-          print(
-              f"{linguagem}: {percentual:.2f}%"
-          )
-
-      print("--------------------------------------")
+      # ==========================================
+      # MOSTRAR RESULTADOS NO ACTIONS
+      # ==========================================
 
       print(
-          f"Python: {python_percentual:.2f}%"
+          "======================================"
+      )
+
+      print(
+          "ESTATÍSTICAS GERADAS"
+      )
+
+      print(
+          "======================================"
+      )
+
+      for linguagem, percentual in (
+          linguagens_ordenadas
+      ):
+
+          print(
+              f"{linguagem}: "
+              f"{percentual:.2f}%"
+          )
+
+      print(
+          "--------------------------------------"
+      )
+
+      print(
+          f"Python: "
+          f"{python_percentual:.2f}%"
       )
 
       print(
@@ -515,7 +563,9 @@ steps:
           f"Forks: {forks}"
       )
 
-      print("--------------------------------------")
+      print(
+          "--------------------------------------"
+      )
 
       print(
           f"Arquivo criado: {arquivo}"
@@ -548,4 +598,3 @@ steps:
 
       fi
 ```
-
