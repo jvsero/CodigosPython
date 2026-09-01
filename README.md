@@ -62,25 +62,24 @@ O gráfico acima apresenta a **porcentagem aproximada de código por linguagem**
 
 ---
 
-## 📌 Estatísticas do GitHub
+## 📊 Estatísticas do GitHub
 
 <div align="center">
 
-<!-- Substitua SEU_USUARIO pelo seu nome de usuário do GitHub -->
-
 <img
 height="180"
-src="https://github-readme-stats.vercel.app/api?username=SEU_USUARIO&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true"
+src="https://github-readme-stats.vercel.app/api?username=SEU_USUARIO&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true"
 alt="Estatísticas do GitHub"
 />
 
 <img
 height="180"
-src="https://github-readme-stats.vercel.app/api/top-langs/?username=SEU_USUARIO&layout=compact&theme=tokyonight&hide_border=true"
-alt="Principais linguagens"
+src="https://github-readme-stats.vercel.app/api/top-langs/?username=SEU_USUARIO&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"
+alt="Linguagens mais utilizadas"
 />
 
 </div>
+
 
 ---
 
