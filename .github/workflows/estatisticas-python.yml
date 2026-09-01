@@ -1,1 +1,551 @@
+name: Gerar estatísticas do Python
+
+on:
+push:
+branches:
+- main
+
+workflow_dispatch:
+
+permissions:
+contents: write
+
+jobs:
+gerar-estatisticas:
+
+```
+runs-on: ubuntu-latest
+
+steps:
+
+  # ==========================================
+  # 1. Baixar o repositório
+  # ==========================================
+
+  - name: Baixar repositório
+    uses: actions/checkout@v4
+
+  # ==========================================
+  # 2. Configurar Python
+  # ==========================================
+
+  - name: Configurar Python
+    uses: actions/setup-python@v5
+    with:
+      python-version: "3.12"
+
+  # ==========================================
+  # 3. Gerar imagem das estatísticas
+  # ==========================================
+
+  - name: Gerar estatísticas
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    run: |
+
+      python <<'PY'
+
+      import json
+      import os
+      import urllib.request
+      from pathlib import Path
+      from html import escape
+
+      # ==========================================
+      # CONFIGURAÇÕES
+      # ==========================================
+
+      USUARIO = "jvsero"
+      REPOSITORIO = "CodigosPython"
+
+      API = "https://api.github.com"
+
+      TOKEN = os.environ.get("GITHUB_TOKEN")
+
+      headers = {
+          "Accept": "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2026-03-10"
+      }
+
+      if TOKEN:
+          headers["Authorization"] = f"Bearer {TOKEN}"
+
+      # ==========================================
+      # FUNÇÃO PARA CONSULTAR API DO GITHUB
+      # ==========================================
+
+      def github_api(url):
+
+          request = urllib.request.Request(
+              url,
+              headers=headers
+          )
+
+          with urllib.request.urlopen(request) as response:
+              return json.loads(response.read().decode("utf-8"))
+
+      # ==========================================
+      # OBTER LINGUAGENS DO REPOSITÓRIO
+      # ==========================================
+
+      url_linguagens = (
+          f"{API}/repos/{USUARIO}/{REPOSITORIO}/languages"
+      )
+
+      linguagens = github_api(url_linguagens)
+
+      # ==========================================
+      # CALCULAR TOTAL DE BYTES
+      # ==========================================
+
+      total_bytes = sum(linguagens.values())
+
+      porcentagens = {}
+
+      if total_bytes > 0:
+
+          for linguagem, bytes_codigo in linguagens.items():
+
+              porcentagens[linguagem] = (
+                  bytes_codigo / total_bytes
+              ) * 100
+
+      # ==========================================
+      # ORDENAR LINGUAGENS
+      # ==========================================
+
+      linguagens_ordenadas = sorted(
+          porcentagens.items(),
+          key=lambda item: item[1],
+          reverse=True
+      )
+
+      # ==========================================
+      # OBTER INFORMAÇÕES DO REPOSITÓRIO
+      # ==========================================
+
+      url_repo = (
+          f"{API}/repos/{USUARIO}/{REPOSITORIO}"
+      )
+
+      repositorio = github_api(url_repo)
+
+      estrelas = repositorio.get("stargazers_count", 0)
+
+      forks = repositorio.get("forks_count", 0)
+
+      issues = repositorio.get("open_issues_count", 0)
+
+      # ==========================================
+      # OBTER NÚMERO DE COMMITS
+      # ==========================================
+
+      url_commits = (
+          f"{API}/repos/{USUARIO}/{REPOSITORIO}/commits?per_page=1"
+      )
+
+      request = urllib.request.Request(
+          url_commits,
+          headers=headers
+      )
+
+      with urllib.request.urlopen(request) as response:
+
+          link_header = response.headers.get("Link", "")
+
+          if 'rel="last"' in link_header:
+
+              parte_final = link_header.split('rel="last"')[0]
+
+              numero = parte_final.split("page=")[-1]
+
+              numero = numero.replace(">", "")
+
+              try:
+                  commits = int(numero)
+              except ValueError:
+                  commits = 0
+
+          else:
+
+              dados_commits = json.loads(
+                  response.read().decode("utf-8")
+              )
+
+              commits = len(dados_commits)
+
+      # ==========================================
+      # PREPARAR DIRETÓRIO
+      # ==========================================
+
+      pasta = Path("assets")
+
+      pasta.mkdir(
+          parents=True,
+          exist_ok=True
+      )
+
+      arquivo = pasta / "github-stats.svg"
+
+      # ==========================================
+      # CORES
+      # ==========================================
+
+      fundo = "#0d1117"
+
+      fundo_card = "#161b22"
+
+      borda = "#30363d"
+
+      texto = "#e6edf3"
+
+      texto_secundario = "#8b949e"
+
+      python_cor = "#3776AB"
+
+      verde = "#3fb950"
+
+      roxo = "#8957e5"
+
+      # ==========================================
+      # BARRAS DAS LINGUAGENS
+      # ==========================================
+
+      barras = ""
+
+      y = 330
+
+      cores = [
+          "#3776AB",
+          "#f1e05a",
+          "#3178c6",
+          "#e34c26",
+          "#563d7c",
+          "#DA5B0B",
+          "#89e051",
+          "#3572A5"
+      ]
+
+      for indice, (linguagem, porcentagem) in enumerate(
+          linguagens_ordenadas[:8]
+      ):
+
+          cor = cores[indice % len(cores)]
+
+          nome = escape(linguagem)
+
+          largura = max(
+              10,
+              porcentagem * 5
+          )
+
+          barras += f"""
+
+          <text
+              x="60"
+              y="{y}"
+              fill="{texto}"
+              font-size="18"
+              font-family="Arial, sans-serif"
+          >
+              {nome}
+          </text>
+
+          <rect
+              x="180"
+              y="{y - 17}"
+              width="500"
+              height="18"
+              rx="9"
+              fill="{borda}"
+          />
+
+          <rect
+              x="180"
+              y="{y - 17}"
+              width="{largura}"
+              height="18"
+              rx="9"
+              fill="{cor}"
+          />
+
+          <text
+              x="700"
+              y="{y}"
+              fill="{texto_secundario}"
+              font-size="17"
+              font-family="Arial, sans-serif"
+          >
+              {porcentagem:.2f}%
+          </text>
+
+          """
+
+          y += 42
+
+      # ==========================================
+      # PORCENTAGEM DO PYTHON
+      # ==========================================
+
+      python_percentual = porcentagens.get(
+          "Python",
+          0
+      )
+
+      # ==========================================
+      # SVG
+      # ==========================================
+
+      altura = max(
+          570,
+          y + 40
+      )
+
+      svg = f"""<svg
+      width="820"
+      height="{altura}"
+      viewBox="0 0 820 {altura}"
+      xmlns="http://www.w3.org/2000/svg">
+
+      <defs>
+
+          <linearGradient
+              id="gradiente"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%">
+
+              <stop
+                  offset="0%"
+                  stop-color="#3776AB"/>
+
+              <stop
+                  offset="100%"
+                  stop-color="#00D4FF"/>
+
+          </linearGradient>
+
+      </defs>
+
+      <rect
+          width="820"
+          height="{altura}"
+          rx="24"
+          fill="{fundo}"
+      />
+
+      <rect
+          x="1"
+          y="1"
+          width="818"
+          height="{altura - 2}"
+          rx="24"
+          fill="none"
+          stroke="{borda}"
+          stroke-width="2"
+      />
+
+      <text
+          x="60"
+          y="65"
+          fill="{texto}"
+          font-size="30"
+          font-weight="bold"
+          font-family="Arial, sans-serif">
+
+          📊 Estatísticas dos meus códigos
+
+      </text>
+
+      <text
+          x="60"
+          y="100"
+          fill="{texto_secundario}"
+          font-size="17"
+          font-family="Arial, sans-serif">
+
+          Repositório: {REPOSITORIO}
+
+      </text>
+
+      <rect
+          x="60"
+          y="130"
+          width="700"
+          height="110"
+          rx="18"
+          fill="{fundo_card}"
+          stroke="{borda}"
+      />
+
+      <text
+          x="85"
+          y="170"
+          fill="{texto_secundario}"
+          font-size="16"
+          font-family="Arial, sans-serif">
+
+          🐍 Python
+
+      </text>
+
+      <text
+          x="85"
+          y="215"
+          fill="{python_cor}"
+          font-size="36"
+          font-weight="bold"
+          font-family="Arial, sans-serif">
+
+          {python_percentual:.2f}%
+
+      </text>
+
+      <text
+          x="260"
+          y="205"
+          fill="{texto}"
+          font-size="18"
+          font-family="Arial, sans-serif">
+
+          participação no código
+
+      </text>
+
+      <text
+          x="60"
+          y="285"
+          fill="{texto}"
+          font-size="22"
+          font-weight="bold"
+          font-family="Arial, sans-serif">
+
+          Linguagens
+
+      </text>
+
+      {barras}
+
+      <line
+          x1="60"
+          y1="{y + 5}"
+          x2="760"
+          y2="{y + 5}"
+          stroke="{borda}"
+      />
+
+      <text
+          x="60"
+          y="{y + 38}"
+          fill="{texto_secundario}"
+          font-size="15"
+          font-family="Arial, sans-serif">
+
+          ⭐ {estrelas} estrelas
+
+      </text>
+
+      <text
+          x="220"
+          y="{y + 38}"
+          fill="{texto_secundario}"
+          font-size="15"
+          font-family="Arial, sans-serif">
+
+          🍴 {forks} forks
+
+      </text>
+
+      <text
+          x="350"
+          y="{y + 38}"
+          fill="{texto_secundario}"
+          font-size="15"
+          font-family="Arial, sans-serif">
+
+          💻 {commits} commits
+
+      </text>
+
+      <text
+          x="535"
+          y="{y + 38}"
+          fill="{texto_secundario}"
+          font-size="15"
+          font-family="Arial, sans-serif">
+
+          🐍 Python
+
+      </text>
+
+      </svg>
+      """
+
+      arquivo.write_text(
+          svg,
+          encoding="utf-8"
+      )
+
+      print("======================================")
+      print("ESTATÍSTICAS GERADAS")
+      print("======================================")
+
+      for linguagem, percentual in linguagens_ordenadas:
+
+          print(
+              f"{linguagem}: {percentual:.2f}%"
+          )
+
+      print("--------------------------------------")
+
+      print(
+          f"Python: {python_percentual:.2f}%"
+      )
+
+      print(
+          f"Commits: {commits}"
+      )
+
+      print(
+          f"Estrelas: {estrelas}"
+      )
+
+      print(
+          f"Forks: {forks}"
+      )
+
+      print("--------------------------------------")
+
+      print(
+          f"Arquivo criado: {arquivo}"
+      )
+
+      PY
+
+  # ==========================================
+  # 4. Salvar imagem no GitHub
+  # ==========================================
+
+  - name: Salvar estatísticas no repositório
+    run: |
+
+      git config user.name "github-actions[bot]"
+
+      git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      git add assets/github-stats.svg
+
+      if git diff --cached --quiet; then
+
+          echo "Nenhuma alteração nas estatísticas."
+
+      else
+
+          git commit -m "docs: atualizar estatísticas do GitHub"
+
+          git push
+
+      fi
+```
 
