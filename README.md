@@ -27,17 +27,17 @@
 
 Olá! Sou **Joel**, estudante de programação e tecnologia.
 
-Atualmente estou focado em **aprender Python**, desenvolvendo minha lógica de programação e criando pequenos projetos para transformar o conhecimento adquirido em prática.
+Atualmente estou focado em **aprender Python**, desenvolvendo minha lógica de programação e criando projetos para transformar conhecimento em prática.
 
 ### 🎯 Meu foco atual
 
-* 🐍 Aprender **Python**
-* 🧠 Desenvolver lógica de programação
-* 🗃️ Aprender estruturas de dados
-* 🛢️ Trabalhar com bancos de dados
-* 🌐 Explorar desenvolvimento Web
-* 🐧 Utilizar Linux no ambiente de desenvolvimento
-* 🚀 Criar projetos para colocar o aprendizado em prática
+* 🐍 Python
+* 🧠 Lógica de programação
+* 🗃️ Estruturas de dados
+* 🛢️ Banco de dados
+* 🌐 Desenvolvimento Web
+* 🐧 Linux
+* 🚀 Projetos práticos
 
 > **Aprender → Praticar → Criar → Compartilhar → Evoluir**
 
@@ -57,57 +57,55 @@ Atualmente estou focado em **aprender Python**, desenvolvendo minha lógica de p
 
 </div>
 
-Estou utilizando Python como uma das principais ferramentas para desenvolver minha base de programação.
-
-Meu objetivo é avançar gradualmente pelos fundamentos da linguagem, estruturas de dados, funções, tratamento de erros, arquivos, banco de dados e desenvolvimento de sistemas.
+Meu principal objetivo neste momento é construir uma base sólida em Python, estudando desde os fundamentos até estruturas de dados, funções, tratamento de exceções, arquivos, banco de dados e desenvolvimento de sistemas.
 
 ---
 
-## 📊 Linguagens utilizadas nos meus projetos
+# 📊 Linguagens dos meus projetos
 
 <div align="center">
 
-<a href="https://github.com/jvsero/CodigosPython/">
+<a href="https://github.com/jvsero">
 
 <img
-src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8&stats_format=percentages"
-alt="Porcentagem das linguagens utilizadas"
+src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"
+alt="Linguagens mais utilizadas por Joel"
 />
 
 </a>
 
 </div>
 
-### 📈 O que esse gráfico representa?
+### 🐍 Python é meu foco atual
 
-O gráfico apresenta a **distribuição percentual das linguagens de programação encontradas nos meus repositórios públicos**.
+Este gráfico é gerado automaticamente a partir dos meus repositórios públicos do GitHub e apresenta a **distribuição percentual das linguagens encontradas no código**.
 
-🐍 **Python** será naturalmente destacado conforme meus projetos em Python forem crescendo.
+Como meu repositório principal atualmente é o **CodigosPython**, que contém diversos arquivos Python, a tendência é que Python apareça como a principal linguagem conforme o volume de código cresce.
 
-> ℹ️ Essas porcentagens representam a quantidade de código encontrada nos repositórios, e não o nível de conhecimento em cada linguagem.
+> 📌 **Importante:** a porcentagem representa a quantidade de código detectada pelo GitHub, não o meu nível de conhecimento na linguagem.
 
 ---
 
-## 📌 Estatísticas do GitHub
+# 📈 Estatísticas do GitHub
 
 <div align="center">
 
-<a href="https://github.com/jvsero/CodigosPython/">
+<a href="https://github.com/jvsero">
 
 <img
 height="180"
-src="https://github-readme-stats.vercel.app/api?username=jvsero&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=false&hide_border=true"
-alt="Estatísticas do GitHub"
+src="https://github-readme-stats.vercel.app/api?username=jvsero&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false"
+alt="Estatísticas do GitHub de Joel"
 />
 
 </a>
 
-<a href="https://github.com/jvsero/CodigosPython/">
+<a href="https://github.com/jvsero">
 
 <img
 height="180"
-src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&stats_format=percentages"
-alt="Principais linguagens"
+src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"
+alt="Principais linguagens de Joel"
 />
 
 </a>
@@ -116,20 +114,20 @@ alt="Principais linguagens"
 
 ---
 
-## 🔥 Sequência de contribuições
+# 🔥 Sequência de contribuições
 
 <div align="center">
 
 <img
 src="https://streak-stats.demolab.com?user=jvsero&theme=tokyonight&hide_border=true"
-alt="GitHub Contribution Streak"
+alt="Sequência de contribuições"
 />
 
 </div>
 
 ---
 
-## 🛠️ Tecnologias que estou estudando
+# 🛠️ Tecnologias que estou estudando
 
 <div align="center">
 
@@ -153,7 +151,7 @@ alt="GitHub Contribution Streak"
 
 ---
 
-## 🧠 Áreas de estudo
+# 🧠 Áreas de estudo
 
 <div align="center">
 
@@ -163,49 +161,84 @@ alt="GitHub Contribution Streak"
 |    🧩 **Algoritmos**   | Resolução de problemas e raciocínio lógico      |
 | 🗃️ **Banco de Dados** | SQL, MySQL, MariaDB e PostgreSQL                |
 |       🌐 **Web**       | HTML, CSS, JavaScript e PHP                     |
-|      🐧 **Linux**      | Ambiente de desenvolvimento e servidores        |
+|      🐧 **Linux**      | Desenvolvimento e servidores                    |
 |      🐳 **Docker**     | Containers e ambientes de aplicação             |
-|    🔧 **Git/GitHub**   | Versionamento e gerenciamento de projetos       |
+|    🔧 **Git/GitHub**   | Versionamento e projetos                        |
 
 </div>
 
 ---
 
-## 📚 Em constante aprendizado
+# 📚 Em constante aprendizado
 
 ```text
-Python
-  │
-  ├── Fundamentos
-  ├── Variáveis e tipos de dados
-  ├── Estruturas condicionais
-  ├── Laços de repetição
-  ├── Listas e dicionários
-  ├── Funções
-  ├── Tratamento de exceções
-  ├── Arquivos
-  ├── Estruturas de dados
-  ├── Banco de dados
-  └── Projetos práticos
+                         🐍 PYTHON
+                             │
+             ┌───────────────┴───────────────┐
+             │                               │
+        FUNDAMENTOS                    LÓGICA
+             │                               │
+      ┌──────┼──────┐                 ┌──────┴──────┐
+      │      │      │                 │             │
+   Variáveis Listas Funções        if / elif       for / while
+      │      │      │                 │             │
+      └──────┴──────┴─────────────────┴─────────────┘
+                             │
+                       ESTRUTURAS
+                         DE DADOS
+                             │
+                   ┌─────────┴─────────┐
+                   │                   │
+                Arquivos            Matrizes
+                   │                   │
+                   └─────────┬─────────┘
+                             │
+                      BANCO DE DADOS
+                             │
+                             ▼
+                         PROJETOS 🚀
 ```
 
 ---
 
-## 🚀 Projetos
+# 🚀 Meu projeto principal
 
 <div align="center">
 
-Estou construindo meus projetos gradualmente enquanto avanço nos estudos.
+<a href="https://github.com/jvsero/CodigosPython">
 
-<br>
+<img src="https://img.shields.io/badge/🐍%20CodigosPython-Repository-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 
-**Cada projeto representa uma nova etapa da minha jornada na programação.** 🐍💻
+</a>
+
+<br><br>
+
+**Repositório dedicado aos meus estudos e exercícios de Python.**
 
 </div>
 
+Atualmente o repositório possui diversos exercícios envolvendo:
+
+* Variáveis
+* Condições
+* `for`
+* `while`
+* Listas
+* Dicionários
+* Funções
+* Matrizes
+* Manipulação de dados
+* Palíndromos
+* CPF
+* Cálculos
+* Estoque
+* Estruturas de dados
+
+O repositório já possui dezenas de arquivos Python e **87 commits**, mostrando a evolução contínua dos estudos.
+
 ---
 
-## 💡 Minha filosofia
+# 💡 Minha filosofia
 
 <div align="center">
 
@@ -213,23 +246,23 @@ Estou construindo meus projetos gradualmente enquanto avanço nos estudos.
 
 <br>
 
-**APRENDER**
+### APRENDER
 
 ⬇️
 
-**PRATICAR**
+### PRATICAR
 
 ⬇️
 
-**CRIAR**
+### CRIAR
 
 ⬇️
 
-**COMPARTILHAR**
+### COMPARTILHAR
 
 ⬇️
 
-**EVOLUIR** 🚀
+### EVOLUIR 🚀
 
 </div>
 
@@ -243,11 +276,11 @@ Estou construindo meus projetos gradualmente enquanto avanço nos estudos.
 
 ---
 
-## 📫 Contato
+# 📫 Contato
 
 <div align="center">
 
-<a href="mailto:[joel.sero@aluno.senai.br](mailto:joel.sero@aluno.senai.br)">
+<a href="mailto:joel.sero@aluno.senai.br">
 
 <img src="https://img.shields.io/badge/Email-joel.sero%40aluno.senai.br-3776AB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
 
