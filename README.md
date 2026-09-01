@@ -67,7 +67,7 @@ Meu objetivo é avançar gradualmente pelos fundamentos da linguagem, estruturas
 
 <div align="center">
 
-<a href="https://github.com/jvsero">
+<a href="https://github.com/jvsero/CodigosPython/">
 
 <img
 src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8&stats_format=percentages"
@@ -92,7 +92,7 @@ O gráfico apresenta a **distribuição percentual das linguagens de programaç�
 
 <div align="center">
 
-<a href="https://github.com/jvsero">
+<a href="https://github.com/jvsero/CodigosPython/">
 
 <img
 height="180"
@@ -102,7 +102,7 @@ alt="Estatísticas do GitHub"
 
 </a>
 
-<a href="https://github.com/jvsero">
+<a href="https://github.com/jvsero/CodigosPython/">
 
 <img
 height="180"
@@ -247,7 +247,7 @@ Estou construindo meus projetos gradualmente enquanto avanço nos estudos.
 
 <div align="center">
 
-<a href="mailto:joel.sero@aluno.senai.br">
+<a href="mailto:[joel.sero@aluno.senai.br](mailto:joel.sero@aluno.senai.br)">
 
 <img src="https://img.shields.io/badge/Email-joel.sero%40aluno.senai.br-3776AB?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
 
