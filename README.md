@@ -1,3 +1,9 @@
+<div align="center">
+
+<img height="300" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenBpMmdxYXBkNjZ0bDUyZ2U3aWVjdWExcG14eGx0MTMwcGU5bTg4ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjHWpiVIOGXT5l9m/giphy.gif" alt="Animação de programação" />
+
+</div>
+
 # 👋 Olá, eu sou Joel!
 
 <div align="center">
