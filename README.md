@@ -1,8 +1,3 @@
-<div align="center">
-
-<img height="300" src="https://github.com/jvsero/CodigosPython/blob/main/assets/logo.png" alt="Animação de programação" />
-
-</div>
 
 # 👋 Olá, eu sou Joel!
 
