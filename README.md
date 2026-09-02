@@ -8,7 +8,7 @@
 
 <br>
 
-> 🚀 **Nosso lema é crescer juntos.**
+ 🚀 **Nosso lema é crescer juntos.**
 > Sua chegada só reforça isso. **Boas-vindas ao time!** 🤝
 
 </div>
