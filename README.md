@@ -61,27 +61,33 @@ Estou utilizando Python como uma das principais ferramentas para desenvolver min
 
 Meu objetivo é avançar gradualmente pelos fundamentos da linguagem, estruturas condicionais, laços de repetição, listas, dicionários, funções, tratamento de exceções, arquivos, matrizes, estruturas de dados, banco de dados e desenvolvimento de sistemas.
 
+
+
 ---
 
 # 📊 Linguagens utilizadas nos meus projetos
 
 <div align="center">
 
-<img
-  src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"
-  alt="Linguagens mais utilizadas"
-  width="400"
-/>
+### 🐍 Linguagem principal
+
+| Linguagem | Utilização |
+|:---------:|:----------:|
+| 🐍 **Python** | ⭐ Principal linguagem de estudo |
+| 🌐 **HTML** | Estudos de desenvolvimento Web |
+| 🎨 **CSS** | Estudos de desenvolvimento Web |
+| 🟨 **JavaScript** | Estudos de programação Web |
+| 🐘 **PHP** | Estudos de desenvolvimento Web |
 
 </div>
 
 ### 📈 Distribuição dos códigos
 
-Este gráfico apresenta a distribuição das linguagens encontradas nos meus repositórios públicos do GitHub.
+Atualmente, meu principal foco de desenvolvimento é **Python**, utilizado nos meus estudos, exercícios e projetos práticos.
 
 > 🐍 **Python é minha principal linguagem de estudo atualmente.**
 
-> ℹ️ A porcentagem representa a quantidade de código detectada nos repositórios. Ela não representa meu nível de conhecimento em cada linguagem.
+> ℹ️ Esta seção apresenta as linguagens que fazem parte da minha jornada de aprendizado.
 
 ---
 
@@ -104,15 +110,22 @@ Este gráfico apresenta a distribuição das linguagens encontradas nos meus rep
 
 <div align="center">
 
-<img
-  src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"
-  alt="Principais linguagens"
-  width="400"
-/>
+<img src="https://skillicons.dev/icons?i=python,html,css,javascript,php" alt="Principais linguagens" height="80">
+
+<br><br>
+
+| 🥇 | Linguagem | Foco |
+|---|---|---|
+| 🥇 | **Python** | Lógica, funções, estruturas de dados e sistemas |
+| 🥈 | **PHP** | Desenvolvimento Web |
+| 🥉 | **JavaScript** | Desenvolvimento Web |
+| 4️⃣ | **HTML** | Estrutura de páginas Web |
+| 5️⃣ | **CSS** | Estilização de páginas Web |
 
 </div>
 
 ---
+
 
 # 🔥 Sequência de contribuições
 
