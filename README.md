@@ -1,14 +1,11 @@
 # 👋 Olá, eu sou Joel!
 
 <div align="center">
-
 ### 🐍 Desenvolvedor em aprendizado contínuo
-
 **Programação • Python • Desenvolvimento de Sistemas • Tecnologia**
 
 <br>
-
- 🚀 **Nosso lema é crescer juntos.**
+>  🚀 **Nosso lema é crescer juntos.**
 > Sua chegada só reforça isso. **Boas-vindas ao time!** 🤝
 
 </div>
