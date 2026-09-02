@@ -68,24 +68,23 @@ Meu objetivo é avançar gradualmente pelos fundamentos da linguagem, estruturas
 <div align="center">
 
 <img
- src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"
- alt="Linguagens mais utilizadas"
- width="400"
+  src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"
+  alt="Linguagens mais utilizadas"
+  width="400"
 />
 
 </div>
 
 ### 📈 Distribuição dos códigos
 
-O gráfico acima é gerado automaticamente a partir dos meus **repositórios públicos do GitHub**.
-
-Ele apresenta a distribuição das linguagens encontradas no código dos meus projetos.
+Este gráfico apresenta a distribuição das linguagens encontradas nos meus repositórios públicos do GitHub.
 
 > 🐍 **Python é minha principal linguagem de estudo atualmente.**
 
 > ℹ️ A porcentagem representa a quantidade de código detectada nos repositórios. Ela não representa meu nível de conhecimento em cada linguagem.
 
 ---
+
 
 # 📌 Estatísticas do GitHub
 
@@ -106,9 +105,9 @@ Ele apresenta a distribuição das linguagens encontradas no código dos meus pr
 <div align="center">
 
 <img
- src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"
- alt="Principais linguagens"
- width="400"
+  src="https://github-readme-stats.vercel.app/api/top-langs/?username=jvsero&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"
+  alt="Principais linguagens"
+  width="400"
 />
 
 </div>
