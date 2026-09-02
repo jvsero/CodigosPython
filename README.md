@@ -92,7 +92,7 @@ Ele apresenta a distribuição das linguagens encontradas no código dos meus pr
 <div align="center">
 
 <img
- src="https://github-readme-stats.vercel.app/api?username=jvsero&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false"
+ src="https://github.com/jvsero/CodigosPython/blob/main/assets/github-stats.svg"
  alt="Estatísticas do GitHub"
  width="450"
 />
