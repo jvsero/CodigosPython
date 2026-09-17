@@ -1,112 +1,148 @@
-```python
-# Importa a biblioteca tkinter.
-#
-# "tkinter" é uma biblioteca do Python usada
-# para criar interfaces gráficas (janelas,
-# botões, campos de texto, etiquetas etc.).
-#
-# "as tk" significa que vamos chamar tkinter
-# pelo apelido "tk".
-#
-# Exemplo:
-# tkinter.Label()
-#
-# passa a ser:
-# tk.Label()
 
+# Importa a biblioteca tkinter
+# Ela permite criar a interface gráfica.
 import tkinter as tk
 
 
-# ==========================================================
-# CLASS CALCULADORA
-# ==========================================================
-#
-# Aqui estamos criando uma CLASS chamada Calculadora.
-#
-# Pense em uma class como uma "estrutura" ou "molde"
-# que reúne os dados e as funções da nossa calculadora.
-#
-# Dentro dela teremos:
-#
-# - os campos dos números
-# - os botões
-# - a operação escolhida
-# - o resultado
-# - as funções que fazem os cálculos
-#
-class Calculadora:
+# Cria a janela principal
+janela = tk.Tk()
 
 
-    # ======================================================
-    # __init__
-    # ======================================================
-    #
-    # O __init__ é um método especial.
-    #
-    # Ele é executado automaticamente quando criamos
-    # um objeto da class Calculadora.
-    #
-    # Exemplo no final do programa:
-    #
-    # calculadora = Calculadora(janela)
-    #
-    # Nesse momento o Python entra automaticamente
-    # neste __init__.
-    #
-    # "self" representa o objeto da calculadora.
-    #
-    # "janela" é a janela que estamos passando para
-    # dentro da class.
-    #
-    def __init__(self, janela):
+# Define o título da janela
+janela.title("Soma de dois valores")
 
 
-        # ==================================================
-        # CONFIGURAÇÃO DA JANELA
-        # ==================================================
-
-        # Guarda a janela dentro do objeto.
-        #
-        # self.janela significa:
-        #
-        # "a janela pertencente a esta calculadora".
-        #
-        # Isso permite utilizar a janela em outros
-        # métodos da class.
-        #
-        self.janela = janela
+# Define o tamanho da janela
+janela.geometry("350x300")
 
 
-        # Define o título da janela.
-        #
-        # A barra superior da janela mostrará:
-        #
-        # Calculadora
-        #
-        self.janela.title("Calculadora")
+# Impede que o usuário altere o tamanho da janela
+janela.resizable(False, False)
 
 
-        # Define o tamanho da janela.
-        #
-        # 500 = largura
-        # 350 = altura
-        #
-        # Portanto:
-        #
-        # 500 pixels de largura
-        # 350 pixels de altura
-        #
-        self.janela.geometry("500x350")
+# ==================================================
+# TÍTULO
+# ==================================================
+
+titulo = tk.Label(
+    janela,
+    text="Soma de dois valores",
+    font=("Arial", 20, "bold")
+)
+
+titulo.pack(pady=20)
 
 
-        # Impede que o usuário redimensione a janela.
-        #
-        # False = não permite alterar o tamanho.
-        #
-        self.janela.resizable(False, False)
+# ==================================================
+# PRIMEIRO VALOR
+# ==================================================
+
+label1 = tk.Label(
+    janela,
+    text="Digite o primeiro valor:",
+    font=("Arial", 12)
+)
+
+label1.pack()
 
 
-        # ==================================================
-        # OPERAÇÃO PADRÃO
-        # ==========================
-```
+# Campo onde o usuário vai digitar o primeiro número
+numero1 = tk.Entry(
+    janela,
+    font=("Arial", 16),
+    justify="center"
+)
+
+numero1.pack(
+    pady=5
+)
+
+
+# ==================================================
+# SEGUNDO VALOR
+# ==================================================
+
+label2 = tk.Label(
+    janela,
+    text="Digite o segundo valor:",
+    font=("Arial", 12)
+)
+
+label2.pack(
+    pady=(10, 0)
+)
+
+
+# Campo onde o usuário vai digitar o segundo número
+numero2 = tk.Entry(
+    janela,
+    font=("Arial", 16),
+    justify="center"
+)
+
+numero2.pack(
+    pady=5
+)
+
+
+# ==================================================
+# FUNÇÃO SOMAR
+# ==================================================
+
+def somar():
+
+    # Pega o valor digitado no primeiro campo
+    valor1 = numero1.get()
+
+    # Pega o valor digitado no segundo campo
+    valor2 = numero2.get()
+
+    # Converte os valores de texto para números
+    valor1 = float(valor1)
+    valor2 = float(valor2)
+
+    # Realiza a soma
+    resultado = valor1 + valor2
+
+    # Mostra o resultado na tela
+    resultado_label.config(
+        text=f"Resultado: {resultado}"
+    )
+
+
+# ==================================================
+# BOTÃO SOMAR
+# ==================================================
+
+botao = tk.Button(
+    janela,
+    text="SOMAR",
+    font=("Arial", 14, "bold"),
+    command=somar
+)
+
+botao.pack(
+    pady=15
+)
+
+
+# ==================================================
+# RESULTADO
+# ==================================================
+
+resultado_label = tk.Label(
+    janela,
+    text="Resultado: 0",
+    font=("Arial", 18, "bold")
+)
+
+resultado_label.pack()
+
+
+# ==================================================
+# INICIAR A INTERFACE
+# ==================================================
+
+# mainloop() mantém a janela aberta
+# e fica esperando o usuário interagir.
+janela.mainloop()
